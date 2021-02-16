@@ -1,32 +1,20 @@
 #!/bin/bash
-WDIR=/home/pi/scripts
-
-# Kick off the camera feed...
-#cd /home/pi/ZumoBot/mjpg-streamer/mjpg-streamer
-#./mjpg_streamer -i "./input_uvc.so" -o "./output_http.so -w ./www" &
-#CAM_PID=$!
-#sleep 3
-
-# Kick off control tcp server...
-#cd /home/pi/ZumoBot/ZumoBot/RPi-Arduino\ Communication/Raspberry\ Pi\ Side
-#python -O Zumo_Robo_srv.py &
-#CTL_PID=$!
-#sleep 3
-
+WDIR=".."
+CURDIR=$PWD
 # Start ngrok
-cd /home/pi/ZumoBot
+cd $WDIR/ngrok/
 ./ngrok start -all -log=stdout > ngrok.log &
 NGK_PID=$!
 sleep 4
 
-cd /home/pi/ZumoBot/ZumoBot/Application/Alpha\ Bot\ Solution/ZumoBot/Web-Control/
+cd $WDIR/RPi-Arduino\ Communication/Raspberry\ Pi\ Side/TeleControl/
 python -O main.py &
 CTL_PID=$!
 sleep 2
 
-
+cd $CURDIR
 echo
-/home/pi/ZumoBot/ZumoBot/Scripts/ngrok_urls.sh
+./ngrok_urls.sh
 echo
 
 function cleanup()

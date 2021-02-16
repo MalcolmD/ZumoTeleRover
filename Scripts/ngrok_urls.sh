@@ -1,4 +1,5 @@
 #!/bin/bash
+CURDIR=$PWD
 
 # Weak sauce URL filter
 # The grep isolates the lines from the log that have the tunnel information.
@@ -15,4 +16,4 @@
 # We select these columns in particular, thereby skipping the middle column which just tells us the port on localhost that is being exposed.
 # The last column matches with any line that has the pattern "url" in it, this removes the redundant address I get for the camera
 
-grep "tunnels name=" /home/pi/ZumoBot/ngrok.log | awk  '{gsub(/.*name=/,"");print}' | awk '{print $1": " $3}' | awk '/url/ {print}'
+grep "tunnels name=" "$CURDIR"/ngrok.log | awk  '{gsub(/.*name=/,"");print}' | awk '{print $1": " $3}' | awk '/url/ {print}'
