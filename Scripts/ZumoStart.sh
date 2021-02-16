@@ -1,13 +1,13 @@
 #!/bin/bash
-WDIR=".."
 CURDIR=$PWD
+
 # Start ngrok
-cd $WDIR/ngrok/
+cd ../ngrok/
 ./ngrok start -all -log=stdout > ngrok.log &
 NGK_PID=$!
 sleep 4
 
-cd $WDIR/RPi-Arduino\ Communication/Raspberry\ Pi\ Side/TeleControl/
+cd ../RPi-Arduino\ Communication/Raspberry\ Pi\ Side/TeleControl/
 python -O main.py &
 CTL_PID=$!
 sleep 2
