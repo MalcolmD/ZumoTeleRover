@@ -1,14 +1,11 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from bottle import get,post,run,route,request,template,static_file
-from RPISerialInterface import RPISerialInterface
 import threading
 import json
 import socket #ip
 import serial
 import os
-
-#RPiSer = RPISerialInterface()
 
 
 
@@ -108,7 +105,7 @@ def cmd():
 
 # Set up the camera feed
 def camera():
-    campath = "/home/pi/ZumoBot/mjpg-streamer/mjpg-streamer/"
+    campath = "../../mjpg-streamer/mjpg-streamer-experimental/"
     print("campath = %s" %campath)
     os.system(campath  + './mjpg_streamer -i "' + campath + './input_uvc.so" -o "' + campath + './output_http.so -w ' + campath + './www"')
 
