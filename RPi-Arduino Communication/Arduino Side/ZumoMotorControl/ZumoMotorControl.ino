@@ -9,7 +9,7 @@ ZumoMotors motors;
 // (400 lets the motors go at top speed; decrease to impose a speed limit)
 const int MAX_SPEED = 400;
 
-const int SERVO_PIN = 6;  // create servo object to control a servo
+#define SERVO_PIN A3  // create servo object to control a servo
 
 int pos = 0;   
 
