@@ -7,6 +7,9 @@ import socket #ip
 import serial
 import os
 
+# Get path to root of our project
+abspath = os.path.abspath(__file__)
+projroot = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(abspath))))
 
 
 # Serial Commands sent to Zumo
@@ -105,13 +108,16 @@ def cmd():
 
 # Set up the camera feed
 def camera():
-    campath = "../../mjpg-streamer/mjpg-streamer-experimental/"
+    campath = projroot + "/mjpg-streamer/mjpg-streamer-experimental/"
     print("campath = %s" %campath)
     os.system(campath  + './mjpg_streamer -i "' + campath + './input_uvc.so" -o "' + campath + './output_http.so -w ' + campath + './www"')
 
 # Set up serial connection to Arduino connected via USB at location 'dev'ttyACM0'
-ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-ser.flush()
+try:
+	ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+	ser.flush()
+except serial.SerialException:
+	print("Error with connection to arduino, please make sure there is a USB cable plugged in from the raspberry pi to the arduino.")  
 
 
 tcamera = threading.Thread(target = camera)

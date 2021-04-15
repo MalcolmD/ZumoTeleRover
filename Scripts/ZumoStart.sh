@@ -1,5 +1,6 @@
 #!/bin/bash
-CURDIR=$PWD
+CURDIR=$(dirname $0)
+cd $CURDIR
 
 # Start ngrok
 cd ../ngrok/

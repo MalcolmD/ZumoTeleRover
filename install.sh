@@ -1,12 +1,18 @@
- #!/bin/bash
+#!/bin/bash
 CURDIR=$PWD
 
-# Requires cmake
+# Update all our packages and software
 sudo apt-get update && sudo apt-get upgrade
+
+# First we need to enable the camera
+sudo raspi-config nonint do_camera 0
+
+# Requires cmake
 sudo apt-get install cmake
 
 # Requires jpeglib
 sudo apt-get install libjpeg9-dev
+
 
 # Install mjpeg-streamer
 cd mjpg-streamer/mjpg-streamer-experimental/
@@ -16,6 +22,10 @@ make
 cd $CURDIR
 python -m pip install bottle
 
-# intialize ngrok
+# Intialize ngrok
 cd ngrok/
 ./ngrok
+
+# Add enviroment variables for zumo to run...
+echo "alias ZumoStart=~/ZumoTeleRover/Scripts/ZumoStart.sh" >> ~/.bashrc
+echo "export ZumoDir=/home/pi/ZumoTeleRover/" >> ~/.bashrc
