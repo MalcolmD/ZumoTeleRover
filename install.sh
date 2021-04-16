@@ -20,7 +20,9 @@ make
 
 # Install Python dependencies
 cd $CURDIR
+sudo apt-get install python-pip -y
 python -m pip install bottle
+python -m pip install pyserial
 
 # Intialize ngrok
 cd ngrok/
