@@ -1,0 +1,11 @@
+authtoken: ""
+
+tunnels:
+  camera:
+    proto: http
+    addr: 8080
+
+  control:
+    proto: http
+    addr: 8000
+    auth: "zumobot:Zoom!"
