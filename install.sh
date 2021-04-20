@@ -31,7 +31,7 @@ else
 
 	# Initialize ngrok
 	cd ngrok/
-	./ngrok $1
+	./ngrok authtoken $1
 	
 	echo "" >> ~/.ngrok2/ngrok.yml
 	cat ngrok.yml >> ~/.ngrok2/ngrok.yml
