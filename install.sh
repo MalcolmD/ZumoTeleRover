@@ -39,12 +39,12 @@ else
 	# Ask for user/password for control access
 	echo ""
 	echo -n "Please provide a username to access Zumo Control: "
-  read USER
+  	read USER
 
-  echo -n "Please provide a password to access Zumo Control: "
-  read PASS
+  	echo -n "Please provide a password to access Zumo Control: "
+  	read PASS
 
-  printf "\nYour user:pass credentials to access the controls page are...\nuser: ${USER}\npassword: ${PASS}\n"
+  	printf "\nYour user:pass credentials to access the controls page are...\nuser: ${USER}\npassword: ${PASS}\n"
 	
 	printf "    auth: \"${USER}:${PASS}\"\n" >> ~/.ngrok2/ngrok.yml
 
