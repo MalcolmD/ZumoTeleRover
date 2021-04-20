@@ -35,6 +35,7 @@ trap cleanup INT
 while true
 do
 	echo "Running Zumo..."
+	./ngrok_urls.sh
 	sleep 20
 done
 
