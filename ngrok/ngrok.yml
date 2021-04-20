@@ -1,5 +1,3 @@
-authtoken: ""
-
 tunnels:
   camera:
     proto: http
@@ -8,4 +6,4 @@ tunnels:
   control:
     proto: http
     addr: 8000
-    auth: "zumobot:Zoom!"
+
